@@ -22,7 +22,7 @@ This repo is **not** the full end-to-end training codebase for the entire projec
 
 The environment follows the **LLaVA base setup used for legacy `v0` workflows** in our project.
 
-In practice, that means the base environment is aligned with the original LLaVA installation pattern:
+In practice, we use the standard LLaVA-style base environment and then install the extra packages needed by this repository:
 
 ```bash
 conda create -n retinalgpt python=3.10 -y
@@ -31,20 +31,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-For users who already have a working LLaVA / `llava-v0` style environment, this repository should usually be added on top of that base environment.
-
-If you are setting things up from scratch, the practical rule is:
-
-1. Build the standard LLaVA environment first.
-2. Then install the extra Python packages needed by this repository.
-
-This repo itself is a data pipeline repo, so it does not duplicate the full LLaVA training/runtime stack.
-
-For the exact upstream base environment and legacy references, please check:
-
-- [LLaVA repository](https://github.com/haotian-liu/LLaVA)
-- [LLaVA installation instructions](https://github.com/haotian-liu/LLaVA/blob/main/README.md)
-- [LLaVA model zoo / legacy v0 references](https://github.com/haotian-liu/LLaVA/blob/main/docs/MODEL_ZOO.md)
+If you already have a working LLaVA / `llava-v0` style environment, you can usually reuse it directly. For more details on the upstream base setup, please refer to the official LLaVA repository.
 
 ## Repository Structure
 
@@ -187,4 +174,4 @@ If you find this project useful, please cite the paper linked above.
 
 ## Acknowledgement
 
-This project is built in the context of retinal multimodal instruction tuning and follows the environment conventions used with `llava-v0`.
+We thank the LLaVA and LLaVA-Med projects, especially the legacy `v0` line, for the foundational environment and open-source vision-language modeling framework that supported this work.
