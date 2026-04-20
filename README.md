@@ -20,18 +20,18 @@ This repository contains the data processing pipeline for instruction data gener
 
 Structured entrypoint:
 
-- `/Users/xiny/Desktop/proj/RetinalGPT/Instruction/run_conversation_pipeline.py`
+- `Instruction/run_conversation_pipeline.py`
 
 Core modules:
 
-- `/Users/xiny/Desktop/proj/RetinalGPT/Instruction/Desc`
-- `/Users/xiny/Desktop/proj/RetinalGPT/Instruction/instruction_gen_async.py`
-- `/Users/xiny/Desktop/proj/RetinalGPT/Instruction/pipeline`
+- `Instruction/Desc`
+- `Instruction/instruction_gen_async.py`
+- `Instruction/pipeline`
 
 Example:
 
 ```bash
-cd /Users/xiny/Desktop/proj/RetinalGPT/Instruction
+cd Instruction
 python3 run_conversation_pipeline.py \
   --images-csv Results_VD/M4/macula_features.csv \
   --save-path batch_simple/instruction/jsonl/UK.jsonl \
