@@ -9,6 +9,7 @@ from openai import AsyncOpenAI
 from dotenv import load_dotenv
 from convert2json import convert_to_map  # Ensure this matches your local file
 
+
 class RetinalDataPipeline:
     def __init__(self, concurrency=10):
         # Load env vars
@@ -144,7 +145,7 @@ class RetinalDataPipeline:
     # ==========================================
     # Task B: Conversation Generation
     # ==========================================
-    async def run_conversation_task(self, image_list, prompt_func, desc_obj, image_dir=None, save_path="conv_output.jsonl", prefix="", ext=""):
+    async def run_conversation_task(self, image_list, prompt_func, desc_obj, image_dir=None, save_path="conv_output.jsonl", prefix="", ext="", align=False):
         """
         Generates conversations based on raw images and/or text.
         Output: JSONL file.
@@ -188,7 +189,7 @@ class RetinalDataPipeline:
                     )
                     
                     raw_res = response.choices[0].message.content
-                    data_map = convert_to_map(raw_res)
+                    data_map = convert_to_map(raw_res, align=align)
                     
                     return {
                         "id": img_name.split('.')[0],
@@ -209,6 +210,45 @@ class RetinalDataPipeline:
             if res:
                 await self._write_jsonl(save_path, res)
                 print(f"Saved Conversation: {res['id']}")
+
+
+async def generate_conversations(
+    image_list,
+    prompt=None,
+    desc=None,
+    save_path="conversations.jsonl",
+    image_path=None,
+    prefix_name="",
+    ext="",
+    concurrency=10,
+    model="gpt-4o-mini",
+    type=None,
+    **kwargs
+):
+    """
+    Backward-compatible entrypoint used by existing scripts in this repo.
+    This keeps the old call style while routing to RetinalDataPipeline.
+    """
+    image_dir = kwargs.pop("image_dir", None) or image_path
+    prefix = kwargs.pop("prefix", None) or prefix_name
+
+    align = kwargs.pop("align", None)
+    if align is None:
+        align = (type == "align")
+
+    pipeline = RetinalDataPipeline(concurrency=concurrency)
+    pipeline.model = model
+
+    await pipeline.run_conversation_task(
+        image_list=image_list,
+        prompt_func=prompt,
+        desc_obj=desc,
+        image_dir=image_dir,
+        save_path=save_path,
+        prefix=prefix,
+        ext=ext,
+        align=align
+    )
 
 # Example Usage (can be in main.py)
 if __name__ == "__main__":

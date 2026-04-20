@@ -1,5 +1,11 @@
 import pandas as pd
-from frac_dic import frac_dic
+try:
+    from Desc.frac_dic import frac_dic
+except ImportError:
+    try:
+        from .frac_dic import frac_dic
+    except ImportError:
+        from frac_dic import frac_dic
 
 class BaseDescription:
     def __init__(self, file_name="", fractal_analysis_csv=None, quality_csv=None):

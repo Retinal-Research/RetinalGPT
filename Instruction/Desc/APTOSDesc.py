@@ -1,5 +1,11 @@
 import pandas as pd
-from BsaeDesc import BaseDescription 
+try:
+    from Desc.BsaeDesc import BaseDescription
+except ImportError:
+    try:
+        from .BsaeDesc import BaseDescription
+    except ImportError:
+        from BsaeDesc import BaseDescription
 
 class APTOSDesc(BaseDescription):
     def __init__(self, file_name="", fractal_analysis_csv=None, quality_csv=None, dr_label_csv=None):

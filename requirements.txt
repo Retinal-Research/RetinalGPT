@@ -1,0 +1,11 @@
+aiofiles
+matplotlib
+numpy
+openai
+opencv-python
+pandas
+pillow
+python-dotenv
+scikit-learn
+tiktoken
+tqdm
