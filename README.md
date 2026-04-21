@@ -245,7 +245,6 @@ The intended engineering flow is now:
 - `Instruction/sample` is the recommended starting point for adapting the pipeline to a new dataset.
 - `Instruction/experiments` keeps the dataset-specific experiment scripts out of the main pipeline path.
 - Parts of the repository structure and code organization were optimized with OpenAI Codex under the authors' supervision.
-- The `figures/` directory stores paper-related assets, but the README intentionally keeps the presentation lightweight.
 
 ## Citation
 
