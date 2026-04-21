@@ -252,4 +252,4 @@ If you find this project useful, please cite the paper linked above.
 
 ## Acknowledgement
 
-We thank the LLaVA and LLaVA-Med projects, especially the legacy `v0` line, for the foundational environment and open-source vision-language modeling framework that supported this work.
+We thank the LLaVA and LLaVA-Med projects. Our training and evaluation code is built on top of their open-source vision-language modeling framework.
