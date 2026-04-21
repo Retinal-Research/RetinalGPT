@@ -1,3 +1,10 @@
+from pathlib import Path
+import sys
+
+INSTRUCTION_ROOT = Path(__file__).resolve().parents[2]
+if str(INSTRUCTION_ROOT) not in sys.path:
+    sys.path.insert(0, str(INSTRUCTION_ROOT))
+
 from pipeline_prompts import miccai_task2_alignment_prompt, miccai_task2_instruction_prompt
 from pipeline_runner import run_named_pipeline_job
 

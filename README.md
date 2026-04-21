@@ -44,9 +44,8 @@ RetinalGPT/
 ├── Instruction/
 │   ├── Desc/                         # Dataset-specific description builders
 │   ├── configs/                      # Config-driven dataset jobs
+│   ├── experiments/                  # Optional script-style experiment entrypoints
 │   ├── tools/                        # Bounding box + postprocess helpers
-│   ├── legacy/                       # Old experiment scripts kept for reference
-│   ├── pipeline/                     # Shared pipeline helpers
 │   ├── pipeline_runner.py            # Config-driven instruction/alignment runner
 │   ├── batch_runner.py               # Config-driven batch runner
 │   ├── pipeline_prompts.py           # Centralized instruction/alignment prompts
@@ -54,8 +53,7 @@ RetinalGPT/
 │   ├── instruction_gen_async.py      # API-based conversation generation
 │   ├── convert2json.py               # Output parsing / JSON conversion
 │   ├── utils.py                      # Shared helper functions
-│   ├── ins_*.py                      # Thin dataset wrappers for main pipeline jobs
-│   └── batch_file_*.py               # Thin dataset wrappers for batch jobs
+│   └── ...
 ├── figures/                          # Paper assets and reference figures
 ├── requirements.txt
 └── README.md
@@ -106,6 +104,8 @@ The project maintains two execution modes:
 - `direct`: call the API directly and write conversation outputs
 - `batch`: package local requests first, send them to the API server, then unpack returned outputs
 
+Most users only need `pipeline_runner.py` and `batch_runner.py`. The older script-style dataset entrypoints now live under `Instruction/experiments/`.
+
 ### 4. Conversation Generation
 
 The main generation logic lives in:
@@ -149,6 +149,15 @@ cd Instruction
 python3 batch_runner.py APTOS
 ```
 
+### Run an experiment-style entry script
+
+```bash
+cd Instruction
+
+python3 experiments/instruction/ins_UK.py
+python3 experiments/batch/batch_file_APTOS.py
+```
+
 ### Output
 
 The pipeline writes conversation samples into JSONL files with fields such as:
@@ -170,14 +179,13 @@ The intended engineering flow is now:
    - `batch_runner.py` for batch request workflows
 4. Use `tools/postprocess` to validate / merge / fix / convert outputs
 5. Use `tools/bounding_box` to generate or inspect lesion bounding boxes
-
-The existing `ins_*.py` and `batch_file_*.py` files are still available as thin wrappers if you prefer the old entry style.
+6. Use `Instruction/experiments/` only if you want the older script-style workflow
 
 ## Notes
 
 - This repository is intended for **research and data construction**.
 - It is centered on retinal conversation generation and instruction data preparation.
-- `Instruction/legacy` keeps older one-off experiment scripts for reference.
+- `Instruction/experiments` keeps script-style entrypoints out of the main pipeline path.
 - The `figures/` directory stores paper-related assets, but the README intentionally keeps the presentation lightweight.
 
 ## Citation
