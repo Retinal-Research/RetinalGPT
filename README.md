@@ -22,6 +22,10 @@ The main workflow in this repo is:
 
 This repo is **not** the full end-to-end training codebase for the entire project. It focuses on the retinal data processing and conversation generation pipeline.
 
+<p align="center">
+  <img src="./figures/data_processing.png" alt="RetinalGPT data processing pipeline" width="760">
+</p>
+
 ## Environment
 
 The environment follows the **LLaVA base setup used for legacy `v0` workflows** in our project.
@@ -262,3 +266,7 @@ If you find this project useful, please cite:
 ## Acknowledgement
 
 We thank the LLaVA and LLaVA-Med projects. Our training and evaluation code is built on top of their open-source vision-language modeling framework.
+
+<p align="center">
+  <img src="./figures/chat.png" alt="RetinalGPT chat example" width="320">
+</p>
