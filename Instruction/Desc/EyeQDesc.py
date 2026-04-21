@@ -70,7 +70,7 @@ if __name__ == "__main__":
     # Init once
     desc = EyeQDesc(
         fractal_analysis_csv='EyePACS/good/M4/macula_features.csv', 
-        dr_label_csv='/media/xinli38/T7 Touch/EyePACS/Label_EyeQ_good.csv'
+        dr_label_csv='/path/to/EyePACS/Label_EyeQ_good.csv'
     )
     
     # Run multiple times fast

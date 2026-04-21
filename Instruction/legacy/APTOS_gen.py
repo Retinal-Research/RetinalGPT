@@ -26,7 +26,7 @@ def create_prompt(image_description):
 
 
 def main():
-    files = pd.read_csv("/media/xinli38/T7 Touch/V&T/Results_APTOS/M4/disc_features.csv")
+    files = pd.read_csv("/path/to/Results_APTOS/M4/disc_features.csv")
     image_list = files.iloc[:, 0].tolist()
     asyncio.run(generate_conversations(image_list[:20]), create_prompt())
 

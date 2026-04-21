@@ -75,7 +75,7 @@ if __name__ == "__main__":
     # Init once
     aptos = APTOSDesc(
         fractal_analysis_csv='frac_analysis/csv_sig/APTOS.csv', 
-        dr_label_csv='/media/xinli38/T7 Touch/V&T/APTOS/train.csv', 
+        dr_label_csv='/path/to/APTOS/train.csv',
         quality_csv='Results_APTOS/M1/results_ensemble.csv'
     )
     

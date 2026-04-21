@@ -127,9 +127,9 @@ class RFMiDDesc(BaseDescription):
 if __name__ == "__main__":
     # Init once
     desc_gen = RFMiDDesc(
-        fractal_analysis_csv='/media/xinli38/T7 Touch/V&T/RFMiD/1. Original Images/Results_train/M4/macula_features.csv', 
-        disease_csv='/media/xinli38/T7 Touch/V&T/RFMiD/2. Groundtruths/a. RFMiD_Training_Labels.csv', 
-        quality_csv='/media/xinli38/T7 Touch/V&T/RFMiD/1. Original Images/Results_train/M1/results_ensemble.csv'
+        fractal_analysis_csv='/path/to/RFMiD/Results_train/M4/macula_features.csv',
+        disease_csv='/path/to/RFMiD/Groundtruths/RFMiD_Training_Labels.csv',
+        quality_csv='/path/to/RFMiD/Results_train/M1/results_ensemble.csv'
     )
     
     # Run

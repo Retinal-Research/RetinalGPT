@@ -59,7 +59,7 @@
       "class": "EyeQDesc",
       "kwargs": {
         "fractal_analysis_csv": "frac_analysis/csv_sig/EyeQ_usable.csv",
-        "dr_label_csv": "/media/xinli38/T7 Touch/EyePACS/Label_EyeQ_usable.csv"
+        "dr_label_csv": "/path/to/EyePACS/Label_EyeQ_usable.csv"
       }
     },
     "save_path": "batch_simple/instruction/jsonl/EyePACS_usable.jsonl",
@@ -84,7 +84,7 @@
       "module": "Desc.EyeQDesc",
       "class": "EyeQDesc",
       "kwargs": {
-        "dr_label_csv": "/media/xinli38/T7 Touch/EyePACS/Label_EyeQ_usable.csv"
+        "dr_label_csv": "/path/to/EyePACS/Label_EyeQ_usable.csv"
       }
     },
     "save_path": "batch_simple/alignment/req/EyeQ_usable_10000-.jsonl",
@@ -332,8 +332,8 @@
       "class": "ODIRDDesc",
       "kwargs": {
         "fractal_analysis_csv": "frac_analysis/csv_sig/ODIR.csv",
-        "quality_csv": "/media/xinli38/T7 Touch/V&T/OIA-ODIR/Results/M1/results_ensemble.csv",
-        "disease_csv": "/media/xinli38/T7 Touch/V&T/OIA-ODIR/Training Set/Annotation/training annotation (English).xlsx"
+        "quality_csv": "/path/to/OIA-ODIR/Results/M1/results_ensemble.csv",
+        "disease_csv": "/path/to/OIA-ODIR/Training_Set/Annotation/training_annotation_English.xlsx"
       }
     },
     "save_path": "batch_simple/instruction/jsonl/ODIR.jsonl",
@@ -359,8 +359,8 @@
       "class": "ODIRDDesc",
       "kwargs": {
         "fractal_analysis_csv": "frac_analysis/csv_sig/ODIR.csv",
-        "quality_csv": "/media/xinli38/T7 Touch/V&T/OIA-ODIR/Results/M1/results_ensemble.csv",
-        "disease_csv": "/media/xinli38/T7 Touch/V&T/OIA-ODIR/Training Set/Annotation/training annotation (English).xlsx"
+        "quality_csv": "/path/to/OIA-ODIR/Results/M1/results_ensemble.csv",
+        "disease_csv": "/path/to/OIA-ODIR/Training_Set/Annotation/training_annotation_English.xlsx"
       }
     },
     "save_path": "batch_simple/alignment/req/ODIR.jsonl",

@@ -17,7 +17,7 @@ def create_prompt():
 
 
 def main():
-    file_path = "/media/xinli38/T7 Touch/V&T/LLaVA-Med-1.0.0/test.json"
+    file_path = "/path/to/LLaVA-Med-1.0.0/test.json"
     with open(file_path, "r", encoding="utf-8") as file:
         data = json.load(file)
         for item in data:
@@ -25,7 +25,7 @@ def main():
             result = generate_text(
                 prompt=create_prompt,
                 question="Does this image show any diseases?",
-                image_path=os.path.join("/media/xinli38/T7 Touch/V&T/LLaVA-Med-1.0.0/dataset", image_id),
+                image_path=os.path.join("/path/to/LLaVA-Med-1.0.0/dataset", image_id),
             )
             print(result)
             break

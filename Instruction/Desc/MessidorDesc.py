@@ -65,7 +65,7 @@ if __name__ == "__main__":
     # Init once
     desc_gen = MessidorDesc(
         fractal_analysis_csv='frac_analysis/csv_sig/Messidor.csv', # Example path
-        dr_label_csv='/media/xinli38/T7 Touch/V&T/Messidor/train.csv'
+        dr_label_csv='/path/to/Messidor/train.csv'
     )
     
     # Run
