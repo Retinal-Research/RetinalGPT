@@ -1,0 +1,3 @@
+image,modality,quality,disease,vascular,notes
+sample_001.png,Color fundus photograph,Good,Mild diabetic retinopathy,"fractal dimension 1.47; vessel density 0.32; tortuosity 0.18",Few scattered microaneurysms near the posterior pole
+sample_002.png,Color fundus photograph,Adequate,No obvious retinal abnormality,"fractal dimension 1.53; vessel density 0.35; tortuosity 0.15",Macula and optic disc are visible

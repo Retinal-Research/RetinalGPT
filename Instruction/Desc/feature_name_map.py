@@ -1,4 +1,4 @@
-frac_dic = {
+FEATURE_NAME_MAP = {
     'Disc_height': 'optic disc height(optic disc vertical diameter)',
     'Disc_width': 'optic disc width(optic disc horizontal  diameter)',
     'Cup_height': 'cup height',

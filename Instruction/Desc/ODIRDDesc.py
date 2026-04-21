@@ -1,5 +1,11 @@
 import pandas as pd
-from Desc.BsaeDesc import BaseDescription 
+try:
+    from Desc.base_description import BaseDescription
+except ImportError:
+    try:
+        from .base_description import BaseDescription
+    except ImportError:
+        from base_description import BaseDescription
 
 class ODIRDDesc(BaseDescription):
     def __init__(self, file_name="", fractal_analysis_csv=None, quality_csv=None, disease_csv=None):

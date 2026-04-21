@@ -1,5 +1,11 @@
-from Desc.BsaeDesc import BaseDescription 
 import pandas as pd
+try:
+    from Desc.base_description import BaseDescription
+except ImportError:
+    try:
+        from .base_description import BaseDescription
+    except ImportError:
+        from base_description import BaseDescription
 
 class AlignDesc(BaseDescription):
     def __init__(self, file_name="", fractal_analysis_csv=None, quality_csv=None, dr_label_csv=None, disease_csv=None):

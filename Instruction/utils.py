@@ -1,11 +1,16 @@
-
-from Desc.BsaeDesc import BaseDescription
 import os
 import json
 from tqdm import tqdm
 import pandas as pd
 import base64
 from convert2json import convert_to_map, convert_file_to_nested_format
+try:
+    from Desc.base_description import BaseDescription
+except ImportError:
+    try:
+        from .Desc.base_description import BaseDescription
+    except ImportError:
+        from base_description import BaseDescription
 
 def create_prompt(image_description):
   prompt = f"""

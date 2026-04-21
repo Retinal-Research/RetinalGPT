@@ -1,5 +1,11 @@
 import pandas as pd
-from Desc.BsaeDesc import BaseDescription 
+try:
+    from Desc.base_description import BaseDescription
+except ImportError:
+    try:
+        from .base_description import BaseDescription
+    except ImportError:
+        from base_description import BaseDescription
 
 class RFMiDDesc(BaseDescription):
     # Mapping defined as a class attribute for cleaner organization

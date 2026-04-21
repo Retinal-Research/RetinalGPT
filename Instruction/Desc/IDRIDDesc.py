@@ -1,12 +1,12 @@
 import json
 import pandas as pd
 try:
-    from Desc.BsaeDesc import BaseDescription
+    from Desc.base_description import BaseDescription
 except ImportError:
     try:
-        from .BsaeDesc import BaseDescription
+        from .base_description import BaseDescription
     except ImportError:
-        from BsaeDesc import BaseDescription
+        from base_description import BaseDescription
 
 class IDRIDDesc(BaseDescription):
     def __init__(self, file_name="", fractal_analysis_csv=None, quality_csv=None, dr_dme_label_csv=None, bd_path=None):

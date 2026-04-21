@@ -11,7 +11,7 @@
       "suffix": ".png"
     },
     "desc": {
-      "module": "Desc.AlignDesc",
+      "module": "Desc.alignment_description",
       "class": "AlignDesc",
       "kwargs": {
         "fractal_analysis_csv": "Results_APTOS/M4/macula_features.csv",
@@ -125,7 +125,7 @@
       "column": 0
     },
     "desc": {
-      "module": "Desc.AlignDesc",
+      "module": "Desc.alignment_description",
       "class": "AlignDesc",
       "kwargs": {
         "fractal_analysis_csv": "Results_APTOS/M4/disc_features.csv",

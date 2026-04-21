@@ -1,4 +1,10 @@
-from Desc.BsaeDesc import BaseDescription 
+try:
+    from Desc.base_description import BaseDescription
+except ImportError:
+    try:
+        from .base_description import BaseDescription
+    except ImportError:
+        from base_description import BaseDescription
 
 class UKDesc(BaseDescription):
     def __init__(self, file_name="", fractal_analysis_csv=None, quality_csv=None, dr_label_csv=None):

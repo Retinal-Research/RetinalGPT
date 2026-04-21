@@ -45,7 +45,8 @@ RetinalGPT/
 │   ├── Desc/                         # Dataset-specific description builders
 │   ├── configs/                      # Config-driven dataset jobs
 │   ├── experiments/                  # Optional script-style experiment entrypoints
-│   ├── tools/                        # Bounding box + postprocess helpers
+│   ├── sample/                       # Minimal bring-your-own-data example
+│   ├── tools/                        # Bounding box and postprocess helpers
 │   ├── pipeline_runner.py            # Config-driven instruction/alignment runner
 │   ├── batch_runner.py               # Config-driven batch runner
 │   ├── pipeline_prompts.py           # Centralized instruction/alignment prompts
@@ -104,7 +105,7 @@ The project maintains two execution modes:
 - `direct`: call the API directly and write conversation outputs
 - `batch`: package local requests first, send them to the API server, then unpack returned outputs
 
-Most users only need `pipeline_runner.py` and `batch_runner.py`. The older script-style dataset entrypoints now live under `Instruction/experiments/`.
+Most users only need `pipeline_runner.py`, `batch_runner.py`, and `Instruction/sample/`. `Instruction/experiments/` keeps the older script-style entrypoints in one place.
 
 ### 4. Conversation Generation
 
@@ -149,6 +150,17 @@ cd Instruction
 python3 batch_runner.py APTOS
 ```
 
+### Run the custom-data sample
+
+```bash
+cd Instruction
+
+python3 sample/generate_instruction_conversations.py \
+  --metadata-csv sample/metadata_template.csv \
+  --image-dir /path/to/your/images \
+  --output-jsonl sample/generated_instruction_conversations.jsonl
+```
+
 ### Run an experiment-style entry script
 
 ```bash
@@ -177,15 +189,16 @@ The intended engineering flow is now:
 3. Run either:
    - `pipeline_runner.py` for `instruction` / `alignment`
    - `batch_runner.py` for batch request workflows
-4. Use `tools/postprocess` to validate / merge / fix / convert outputs
-5. Use `tools/bounding_box` to generate or inspect lesion bounding boxes
-6. Use `Instruction/experiments/` only if you want the older script-style workflow
+4. Use `convert2json.py`, `utils.py`, and `Instruction/tools/` for packing, unpacking, conversion, and utility workflows
+5. Use `Instruction/sample/` as the minimal bring-your-own-data example
+6. Use `Instruction/experiments/` only if you want the old script-style entrypoints
 
 ## Notes
 
 - This repository is intended for **research and data construction**.
 - It is centered on retinal conversation generation and instruction data preparation.
-- `Instruction/experiments` keeps script-style entrypoints out of the main pipeline path.
+- `Instruction/sample` is the recommended starting point for adapting the pipeline to a new dataset.
+- `Instruction/experiments` keeps the dataset-specific experiment scripts out of the main pipeline path.
 - The `figures/` directory stores paper-related assets, but the README intentionally keeps the presentation lightweight.
 
 ## Citation

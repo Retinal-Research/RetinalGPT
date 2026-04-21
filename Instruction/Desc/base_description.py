@@ -1,11 +1,11 @@
 import pandas as pd
 try:
-    from Desc.frac_dic import frac_dic
+    from Desc.feature_name_map import FEATURE_NAME_MAP
 except ImportError:
     try:
-        from .frac_dic import frac_dic
+        from .feature_name_map import FEATURE_NAME_MAP
     except ImportError:
-        from frac_dic import frac_dic
+        from feature_name_map import FEATURE_NAME_MAP
 
 class BaseDescription:
     def __init__(self, file_name="", fractal_analysis_csv=None, quality_csv=None):
@@ -53,8 +53,8 @@ class BaseDescription:
                 if pd.isna(value) or value in [-1, 0, 1] or value < 0.001:
                     continue
                 
-                # Use frac_dic to translate column name
-                readable_name = frac_dic.get(col_name, col_name)
+                # Translate internal feature names into readable descriptions.
+                readable_name = FEATURE_NAME_MAP.get(col_name, col_name)
                 desc_list.append(f"{readable_name} is {value:.3f}")
 
         except Exception as e:
