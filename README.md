@@ -244,11 +244,21 @@ The intended engineering flow is now:
 - It is centered on retinal conversation generation and instruction data preparation.
 - `Instruction/sample` is the recommended starting point for adapting the pipeline to a new dataset.
 - `Instruction/experiments` keeps the dataset-specific experiment scripts out of the main pipeline path.
+- Parts of the repository structure and code organization were optimized with OpenAI Codex under the authors' supervision.
 - The `figures/` directory stores paper-related assets, but the README intentionally keeps the presentation lightweight.
 
 ## Citation
 
-If you find this project useful, please cite the paper linked above.
+If you find this project useful, please cite:
+
+```bibtex
+@article{zhu2025retinalgpt,
+  title={Retinalgpt: A retinal clinical preference conversational assistant powered by large vision-language models},
+  author={Zhu, Wenhui and Li, Xin and Chen, Xiwen and Qiu, Peijie and Vasa, Vamsi Krishna and Dong, Xuanzhao and Chen, Yanxi and Lepore, Natasha and Dumitrascu, Oana and Su, Yi and others},
+  journal={arXiv preprint arXiv:2503.03987},
+  year={2025}
+}
+```
 
 ## Acknowledgement
 
