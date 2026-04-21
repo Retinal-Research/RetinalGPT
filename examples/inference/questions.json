@@ -1,0 +1,15 @@
+[
+  {
+    "id": "sample_001",
+    "image": "sample_001.png",
+    "question": "Please describe this retinal image in detail."
+  },
+  {
+    "id": "sample_002",
+    "image": "sample_002.png",
+    "questions": [
+      "What does this retinal image show?",
+      "Are there any abnormalities in this image?"
+    ]
+  }
+]

@@ -134,6 +134,49 @@ Both are config-driven and use dataset jobs defined in `Instruction/configs/`.
 
 ## Quick Start
 
+### Run RetinalGPT inference
+
+For the simplest single-image run:
+
+```bash
+python3 run_retinalGPT_simple.py \
+  --model-name ASU-GSL/RetinalGPT \
+  --image-file /path/to/retinal_image.png \
+  --question "Please describe this retinal image in detail."
+```
+
+After downloading the RetinalGPT weights, you can run inference directly with:
+
+```bash
+python3 run_retinalGPT.py \
+  --model-name ASU-GSL/RetinalGPT \
+  --image-folder /path/to/images \
+  --question-file examples/inference/questions.json \
+  --answers-file /path/to/predictions.jsonl
+```
+
+You can also run batch inference with a JSON or JSONL question file:
+
+```bash
+python3 run_retinalGPT.py \
+  --model-name ASU-GSL/RetinalGPT \
+  --image-folder /path/to/images \
+  --question-file /path/to/questions.jsonl \
+  --answers-file /path/to/predictions.jsonl
+```
+
+Supported batch input fields are:
+
+- `id`
+- `image` or `images`
+- `question`
+- `questions`
+- `messages`
+
+For `messages`, the script automatically extracts user or human turns as questions.
+
+A minimal example question file is provided at [examples/inference/questions.json](./examples/inference/questions.json).
+
 ### Run an instruction/alignment job
 
 ```bash
@@ -160,6 +203,8 @@ python3 sample/generate_instruction_conversations.py \
   --image-dir /path/to/your/images \
   --output-jsonl sample/generated_instruction_conversations.jsonl
 ```
+
+For the minimal custom-data walkthrough, see [Instruction/sample/README.md](./Instruction/sample/README.md).
 
 ### Run an experiment-style entry script
 
