@@ -1,0 +1,164 @@
+{
+  "APTOS": {
+    "action": "create_batch",
+    "prompt": "aptos_batch_prompt",
+    "image_list": {
+      "type": "csv_filter_suffix",
+      "path": "APTOS/train.csv",
+      "match_column": 1,
+      "match_value": 0,
+      "output_column": 0,
+      "suffix": ".png"
+    },
+    "desc": {
+      "module": "Desc.AlignDesc",
+      "class": "AlignDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "Results_APTOS/M4/macula_features.csv",
+        "quality_csv": "Results_APTOS/M1/results_ensemble.csv",
+        "dr_label_csv": "APTOS/train.csv"
+      }
+    },
+    "save_path": "/media/xinli38/T7 Touch/V&T/batchs/inputs/APTOS_0.jsonl",
+    "img_path": "APTOS/train/"
+  },
+  "APTOS_unpack": {
+    "action": "unpack_outputs",
+    "batch_path": "/media/xinli38/T7 Touch/V&T/batchs/outputs/APTOS/batch_6756bf87fcc48191b159452299e3a843_output.jsonl",
+    "save_path": "/media/xinli38/T7 Touch/V&T/batchs/json_list/APTOS.jsonl",
+    "instruction_save": "/media/xinli38/T7 Touch/V&T/batchs/instructions/instruction_APTOS.json",
+    "prefix_name": "APTOS",
+    "align": true
+  },
+  "EyeQ": {
+    "action": "generate_conversations",
+    "prompt": "eyeq_batch_prompt",
+    "image_list": {
+      "type": "explicit",
+      "values": [
+        "12802_right.png",
+        "12829_left.png",
+        "12829_right.png",
+        "12837_right.png",
+        "12839_left.png",
+        "12856_right.png",
+        "12864_left.png",
+        "12877_left.png",
+        "25829_right.png",
+        "2582_left.png",
+        "25875_left.png",
+        "25893_right.png",
+        "26006_left.png",
+        "26007_right.png",
+        "28296_right.png",
+        "28307_left.png",
+        "28328_left.png",
+        "28333_left.png"
+      ]
+    },
+    "desc": {
+      "module": "Desc.EyeQDesc",
+      "class": "EyeQDesc",
+      "kwargs": {
+        "dr_label_csv": "/media/xinli38/T7 Touch/EyePACS/Label_EyeQ_good.csv"
+      }
+    },
+    "save_path": "batchs/instructions/loacal/test.jsonl",
+    "image_path": "/media/xinli38/T7 Touch/EyePACS/good_quality/image_224",
+    "prefix_name": "EyePACS/"
+  },
+  "IDRID": {
+    "action": "generate_conversations",
+    "prompt": "idrid_seg_batch_prompt",
+    "image_list": {
+      "type": "dir",
+      "path": "/media/xinli38/T7 Touch/V&T/Results_IDRID_seg/M0/images"
+    },
+    "desc": {
+      "module": "Desc.IDRIDDesc",
+      "class": "IDRIDDesc",
+      "kwargs": {}
+    },
+    "save_path": "batchs/instructions/loacal/IDRID_seg.jsonl",
+    "image_path": "/media/xinli38/T7 Touch/V&T/Results_IDRID_seg/M0/images",
+    "prefix_name": "IDRID_seg/"
+  },
+  "MICCAI": {
+    "action": "create_batch",
+    "prompt": "miccai_lt_batch_prompt",
+    "image_list": {
+      "type": "dir",
+      "path": "/media/xinli38/T7 Touch/V&T/Results_MICCAI_task2/M0/images"
+    },
+    "desc": {
+      "module": "Desc.MICCAIDesc",
+      "class": "MICCAIDesc",
+      "kwargs": {}
+    },
+    "save_path": "/media/xinli38/T7 Touch/V&T/batchs/inputs/MICCAI_task2.jsonl",
+    "img_path": "/media/xinli38/T7 Touch/V&T/Results_MICCAI_task2/M0/images"
+  },
+  "Messidor": {
+    "action": "create_batch",
+    "prompt": "messidor_batch_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Messidor/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.MessidorDesc",
+      "class": "MessidorDesc",
+      "kwargs": {
+        "dr_label_csv": "Messidor/train.csv"
+      }
+    },
+    "save_path": "/media/xinli38/T7 Touch/V&T/batchs/inputs/Messidor_0-1500.jsonl",
+    "img_path": "Messidor/image"
+  },
+  "ODIR": {
+    "action": "create_batch",
+    "prompt": "odir_batch_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_APTOS/M4/disc_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.AlignDesc",
+      "class": "AlignDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "Results_APTOS/M4/disc_features.csv",
+        "quality_csv": "Results_APTOS/M1/results_ensemble.csv",
+        "dr_label_csv": "APTOS/train.csv"
+      }
+    },
+    "save_path": "/media/xinli38/T7 Touch/V&T/batchs/inputs/APTOS.jsonl",
+    "img_path": "APTOS/train/"
+  },
+  "ODIR_unpack": {
+    "action": "unpack_outputs",
+    "batch_path": "/media/xinli38/T7 Touch/V&T/batchs/outputs/batch_6755ea8babb08191b6b03f62fcd06e71_output.jsonl",
+    "save_path": "/media/xinli38/T7 Touch/V&T/batchs/json_list/ODIR.jsonl",
+    "instruction_save": "/media/xinli38/T7 Touch/V&T/batchs/instructions/instruction_ODIR.json",
+    "prefix_name": "ODIR",
+    "align": true
+  },
+  "RFMiD": {
+    "action": "create_batch",
+    "prompt": "rfmid_batch_prompt",
+    "image_list": {
+      "type": "dir",
+      "path": "/media/xinli38/T7 Touch/V&T/RFMiD/1. Original Images/test/image"
+    },
+    "desc": {
+      "module": "Desc.RFMiDDesc",
+      "class": "RFMiDDesc",
+      "kwargs": {
+        "disease_csv": "/media/xinli38/T7 Touch/V&T/RFMiD/2. Groundtruths/c. RFMiD_Testing_Labels.csv"
+      }
+    },
+    "save_path": "/media/xinli38/T7 Touch/V&T/batchs/inputs/RFMiD_test.jsonl",
+    "img_path": "/media/xinli38/T7 Touch/V&T/RFMiD/1. Original Images/test/image"
+  }
+}

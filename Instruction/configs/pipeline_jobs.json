@@ -1,0 +1,457 @@
+{
+  "APTOS_instruction_batch": {
+    "dataset": "APTOS",
+    "mode": "instruction",
+    "action": "batch_create",
+    "prompt": "aptos_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_APTOS/M4/macula_features.csv",
+      "column": 0,
+      "start": 2300
+    },
+    "desc": {
+      "module": "Desc.APTOSDesc",
+      "class": "APTOSDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/APTOS.csv",
+        "quality_csv": "Results_APTOS/M1/results_ensemble.csv",
+        "dr_label_csv": "APTOS/train.csv"
+      }
+    },
+    "save_path": "batch_simple/instruction/req/APTOS_2300-.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "APTOS_alignment_batch": {
+    "dataset": "APTOS",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "aptos_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_APTOS/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.APTOSDesc",
+      "class": "APTOSDesc",
+      "kwargs": {
+        "quality_csv": "Results_APTOS/M1/results_ensemble.csv",
+        "dr_label_csv": "APTOS/train.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/APTOS.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "EyePACS_instruction_direct": {
+    "dataset": "EyePACS",
+    "mode": "instruction",
+    "action": "direct_generate_batched",
+    "prompt": "eyepacs_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "frac_analysis/csv_sig/EyeQ_usable.csv",
+      "column": 0,
+      "start": 4950
+    },
+    "desc": {
+      "module": "Desc.EyeQDesc",
+      "class": "EyeQDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/EyeQ_usable.csv",
+        "dr_label_csv": "/media/xinli38/T7 Touch/EyePACS/Label_EyeQ_usable.csv"
+      }
+    },
+    "save_path": "batch_simple/instruction/jsonl/EyePACS_usable.jsonl",
+    "instruction_save": "batch_simple/instruction/ins/EyePACS.json",
+    "prefix_name": "EyePACS/",
+    "ext": ", the image is of acceptable with noise, the modality of the image is Color Fundus Photograph",
+    "batch_size": 50,
+    "max_retries": 3,
+    "sleep_seconds": 3
+  },
+  "EyePACS_alignment_batch": {
+    "dataset": "EyePACS",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "eyepacs_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "frac_analysis/csv_sig/EyeQ_usable.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.EyeQDesc",
+      "class": "EyeQDesc",
+      "kwargs": {
+        "dr_label_csv": "/media/xinli38/T7 Touch/EyePACS/Label_EyeQ_usable.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/EyeQ_usable_10000-.jsonl",
+    "ext": ", the image is of acceptable with noise, the modality of the image is Color Fundus Photograph"
+  },
+  "IDRID_instruction_direct": {
+    "dataset": "IDRID",
+    "mode": "instruction",
+    "action": "direct_generate",
+    "prompt": "idrid_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_IDRID_train/M4/macula_features.csv",
+      "column": 0,
+      "start": 300
+    },
+    "desc": {
+      "module": "Desc.IDRIDDesc",
+      "class": "IDRIDDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/IDRID_train.csv",
+        "dr_dme_label_csv": "IDRID/B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv",
+        "quality_csv": "Results_IDRID_train/M1/results_ensemble.csv"
+      }
+    },
+    "save_path": "batch_simple/instruction/jsonl/IDRID_train.jsonl",
+    "instruction_save": "batch_simple/instruction/ins/IDRID_train.jsonl",
+    "prefix_name": "IDRID_train/",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "IDRID_alignment_batch": {
+    "dataset": "IDRID",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "idrid_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_IDRID_train/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.IDRIDDesc",
+      "class": "IDRIDDesc",
+      "kwargs": {
+        "dr_dme_label_csv": "IDRID/B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv",
+        "quality_csv": "Results_IDRID_train/M1/results_ensemble.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/IDRID_train.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "IDRID_seg_instruction_direct": {
+    "dataset": "IDRID_seg",
+    "mode": "instruction",
+    "action": "direct_generate",
+    "prompt": "idrid_seg_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "frac_analysis/csv_sig/IDRID_seg.csv",
+      "column": 0,
+      "start": 10
+    },
+    "desc": {
+      "module": "Desc.IDRIDDesc",
+      "class": "IDRIDDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/IDRID_seg.csv",
+        "quality_csv": "Results_IDRID_seg/M1/results_ensemble.csv",
+        "bd_path": "IDRID/bounding_boxes.json"
+      }
+    },
+    "save_path": "batch_simple/instruction/jsonl/IDRID_seg.jsonl",
+    "instruction_save": "batch_simple/instruction/ins/IDRID_seg.json",
+    "prefix_name": "IDRID_seg/",
+    "ext": "The modality of the image is Color Fundus Photograph"
+  },
+  "IDRID_seg_alignment_batch": {
+    "dataset": "IDRID_seg",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "idrid_seg_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "frac_analysis/csv_sig/IDRID_seg.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.IDRIDDesc",
+      "class": "IDRIDDesc",
+      "kwargs": {
+        "quality_csv": "Results_IDRID_seg/M1/results_ensemble.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/IDRID_seg.jsonl",
+    "ext": ", The modality of the image is Color Fundus Photograph, the image contain signs of diabetic retinopathy"
+  },
+  "MICCAI_task1_instruction_batch": {
+    "dataset": "MICCAI_task1",
+    "mode": "instruction",
+    "action": "batch_create",
+    "prompt": "miccai_task1_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_MCCAI/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.MICCAIDesc",
+      "class": "MICCAIDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/MICCAI_t1.csv",
+        "quality_csv": "Results_MCCAI/M1/results_ensemble.csv",
+        "MG_label_csv": "MICCAI/2. Groundtruths/labels.csv"
+      }
+    },
+    "save_path": "batch_simple/instruction/req/MICCAI_task1.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "MICCAI_task1_alignment_batch": {
+    "dataset": "MICCAI_task1",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "miccai_task1_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_MCCAI/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.MICCAIDesc",
+      "class": "MICCAIDesc",
+      "kwargs": {
+        "quality_csv": "Results_MCCAI/M1/results_ensemble.csv",
+        "MG_label_csv": "MICCAI/2. Groundtruths/labels.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/MICCAI_task1.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "MICCAI_task2_instruction_direct": {
+    "dataset": "MICCAI_task2",
+    "mode": "instruction",
+    "action": "direct_generate",
+    "prompt": "miccai_task2_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_MICCAI_task2/M4/macula_features.csv",
+      "column": 0,
+      "start": 100
+    },
+    "desc": {
+      "module": "Desc.MICCAIDesc",
+      "class": "MICCAIDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/MICCAI_task2.csv",
+        "quality_csv": "Results_MICCAI_task2/M1/results_ensemble.csv",
+        "bd_path": "MICCAI/task2/bounding_boxes.json"
+      }
+    },
+    "save_path": "batch_simple/instruction/jsonl/MICCAI_t2.jsonl",
+    "instruction_save": "batch_simple/instruction/ins/MICCAI_t2.jsonl",
+    "prefix_name": "MICCAI/",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "MICCAI_task2_alignment_batch": {
+    "dataset": "MICCAI_task2",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "miccai_task2_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_MICCAI_task2/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.MICCAIDesc",
+      "class": "MICCAIDesc",
+      "kwargs": {
+        "quality_csv": "Results_MICCAI_task2/M1/results_ensemble.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/MICCAI_task2.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "Messidor_instruction_direct": {
+    "dataset": "Messidor",
+    "mode": "instruction",
+    "action": "direct_generate",
+    "prompt": "messidor_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Messidor/M4/macula_features.csv",
+      "column": 0,
+      "start": 1100,
+      "end": 1200
+    },
+    "desc": {
+      "module": "Desc.MessidorDesc",
+      "class": "MessidorDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/Messidor.csv",
+        "quality_csv": "Messidor/results_ensemble.csv",
+        "dr_label_csv": "Messidor/train.csv"
+      }
+    },
+    "save_path": "batch_simple/instruction/jsonl/Messidor.jsonl",
+    "instruction_save": "batch_simple/instruction/ins/Messidor.json",
+    "prefix_name": "Messidor/",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "Messidor_alignment_batch": {
+    "dataset": "Messidor",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "messidor_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Messidor/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.MessidorDesc",
+      "class": "MessidorDesc",
+      "kwargs": {
+        "quality_csv": "Messidor/results_ensemble.csv",
+        "dr_label_csv": "Messidor/train.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/Missidor.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "ODIR_instruction_direct": {
+    "dataset": "ODIR",
+    "mode": "instruction",
+    "action": "direct_generate_batched",
+    "prompt": "odir_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "frac_analysis/csv_sig/ODIR.csv",
+      "column": 0,
+      "start": 6000
+    },
+    "desc": {
+      "module": "Desc.ODIRDDesc",
+      "class": "ODIRDDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/ODIR.csv",
+        "quality_csv": "/media/xinli38/T7 Touch/V&T/OIA-ODIR/Results/M1/results_ensemble.csv",
+        "disease_csv": "/media/xinli38/T7 Touch/V&T/OIA-ODIR/Training Set/Annotation/training annotation (English).xlsx"
+      }
+    },
+    "save_path": "batch_simple/instruction/jsonl/ODIR.jsonl",
+    "instruction_save": "batch_simple/instruction/ins/ODIR.json",
+    "prefix_name": "ODIR/",
+    "ext": ", the modality of the image is Color Fundus Photograph",
+    "batch_size": 50,
+    "max_retries": 3,
+    "sleep_seconds": 3
+  },
+  "ODIR_alignment_batch": {
+    "dataset": "ODIR",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "odir_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "frac_analysis/csv_sig/ODIR.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.ODIRDDesc",
+      "class": "ODIRDDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/ODIR.csv",
+        "quality_csv": "/media/xinli38/T7 Touch/V&T/OIA-ODIR/Results/M1/results_ensemble.csv",
+        "disease_csv": "/media/xinli38/T7 Touch/V&T/OIA-ODIR/Training Set/Annotation/training annotation (English).xlsx"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/ODIR.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "RFMiD_instruction_batch": {
+    "dataset": "RFMiD",
+    "mode": "instruction",
+    "action": "batch_create",
+    "prompt": "rfmid_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "RFMiD/1. Original Images/Results_train/M4/macula_features.csv",
+      "column": 0,
+      "end": 1000
+    },
+    "desc": {
+      "module": "Desc.RFMiDDesc",
+      "class": "RFMiDDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/RFMiD_train.csv",
+        "quality_csv": "RFMiD/1. Original Images/Results_train/M1/results_ensemble.csv",
+        "disease_csv": "RFMiD/2. Groundtruths/a. RFMiD_Training_Labels.csv"
+      }
+    },
+    "save_path": "batch_simple/instruction/req/RFMiD_train1.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "RFMiD_alignment_batch": {
+    "dataset": "RFMiD",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "rfmid_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "RFMiD/1. Original Images/Results_train/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.RFMiDDesc",
+      "class": "RFMiDDesc",
+      "kwargs": {
+        "quality_csv": "RFMiD/1. Original Images/Results_val/M1/results_ensemble.csv",
+        "disease_csv": "RFMiD/2. Groundtruths/b. RFMiD_Validation_Labels.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/RFMiD_val.jsonl",
+    "ext": ", the modality of the image is Color Fundus Photograph"
+  },
+  "UK_instruction_direct": {
+    "dataset": "UK",
+    "mode": "instruction",
+    "action": "direct_generate",
+    "prompt": "uk_instruction_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_VD/M4/macula_features.csv",
+      "column": 0,
+      "start": 300
+    },
+    "desc": {
+      "module": "Desc.UKDesc",
+      "class": "UKDesc",
+      "kwargs": {
+        "fractal_analysis_csv": "frac_analysis/csv_sig/UK_VD.csv",
+        "quality_csv": "Results_VD/M1/results_ensemble.csv"
+      }
+    },
+    "save_path": "batch_simple/instruction/jsonl/UK.jsonl",
+    "instruction_save": "batch_simple/instruction/ins/UK.json",
+    "prefix_name": "UK/",
+    "ext": ",this image has vascular dementia, the modality of the image is Color Fundus Photograph"
+  },
+  "UK_alignment_batch": {
+    "dataset": "UK",
+    "mode": "alignment",
+    "action": "batch_create",
+    "prompt": "uk_alignment_prompt",
+    "image_list": {
+      "type": "csv_column",
+      "path": "Results_VD/M4/macula_features.csv",
+      "column": 0
+    },
+    "desc": {
+      "module": "Desc.UKDesc",
+      "class": "UKDesc",
+      "kwargs": {
+        "quality_csv": "Results_VD/M1/results_ensemble.csv"
+      }
+    },
+    "save_path": "batch_simple/alignment/req/VD.jsonl",
+    "ext": ",this image has vascular dementia, the modality of the image is Color Fundus Photograph"
+  }
+}
