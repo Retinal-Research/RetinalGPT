@@ -6,9 +6,11 @@
 
 ---
 
-## News
+## 🔔 News
 
 - **[2026.04.14]** RetinalGPT was submitted to *Ophthalmology Science* and is currently under review.
+
+## 👀 Overview
 
 RetinalGPT is a retinal vision-language assistant for clinically grounded ophthalmic image understanding and conversation.
 
@@ -25,7 +27,7 @@ This repository includes:
 
 ---
 
-## Highlights
+## ✨ Highlights
 
 - **Retinal Multimodal Assistant:** RetinalGPT supports clinically grounded retinal image understanding and conversation with a vision-language modeling framework.
 - **Instruction-Tuned Ophthalmology Intelligence:** The project focuses on instruction-following retinal dialogue for clinical-style reasoning and response generation.
@@ -34,7 +36,7 @@ This repository includes:
 
 ---
 
-## Installation
+## ⚙️ Installation
 
 ```bash
 conda create -n retinalgpt python=3.10 -y
@@ -47,7 +49,7 @@ CUDA is required for the provided inference scripts.
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Single-image inference
 
@@ -98,7 +100,7 @@ More details: [Instruction/sample/README.md](./Instruction/sample/README.md)
 
 ---
 
-## Repository Structure
+## 📁 Repository Structure
 
 ```text
 RetinalGPT/
@@ -116,7 +118,7 @@ RetinalGPT/
 └── README.md
 ```
 
-## Pipeline Overview
+## 🧠 Pipeline Overview
 
 The data pipeline converts retinal metadata into hidden textual descriptions, then uses prompt templates to generate instruction-following retinal conversations.
 
@@ -137,13 +139,13 @@ Supported dataset description builders include:
 
 ---
 
-## Acknowledgement
+## 🙏 Acknowledgement
 
 We thank the LLaVA and LLaVA-Med projects for their open-source vision-language modeling framework.
 
 ---
 
-## Citation
+## 📖 Citation
 
 ```bibtex
 @article{zhu2025retinalgpt,
