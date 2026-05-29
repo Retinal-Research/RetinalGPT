@@ -120,18 +120,7 @@ More details: [Instruction/sample/README.md](./Instruction/sample/README.md)
 
 ## 🧠 Pipeline Overview
 
-The data pipeline converts retinal metadata into hidden textual descriptions, then uses prompt templates to generate instruction-following retinal conversations.
-
-Supported dataset description builders include:
-
-- `APTOSDesc`
-- `EyeQDesc`
-- `IDRIDDesc`
-- `MICCAIDesc`
-- `MessidorDesc`
-- `ODIRDDesc`
-- `RFMiDDesc`
-- `UKDesc`
+The figure below illustrates the overall RetinalGPT data construction workflow. We first collect retinal images and structured ophthalmic metadata, then convert them into hidden textual descriptions. These descriptions are combined with prompt templates to generate retinal instruction-following conversations and alignment data for downstream model development.
 
 <p align="center">
   <img src="./figures/data_processing.png" alt="RetinalGPT data processing pipeline" width="760">
