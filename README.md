@@ -6,6 +6,10 @@
 
 RetinalGPT is a retinal multimodal assistant built on large vision-language models for clinically oriented retinal image understanding and conversation.
 
+## News
+
+- April 14, 2026: RetinalGPT was submitted to *Ophthalmology Science* and is currently under review.
+
 This repository provides the core code used in the paper [RetinalGPT: A Retinal Clinical Preference Conversational Assistant Powered by Large Vision-Language Models](https://arxiv.org/abs/2503.03987), including:
 
 - inference scripts for the released RetinalGPT model
