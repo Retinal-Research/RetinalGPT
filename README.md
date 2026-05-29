@@ -4,39 +4,43 @@
 [![Paper](https://img.shields.io/badge/arXiv-2503.03987-b31b1b)](https://arxiv.org/abs/2503.03987)
 [![Model](https://img.shields.io/badge/HuggingFace-Model-orange)](https://huggingface.co/ASU-GSL/RetinalGPT)
 
-RetinalGPT is a retinal multimodal assistant built on large vision-language models.
+RetinalGPT is a retinal multimodal assistant built on large vision-language models for clinically oriented retinal image understanding and conversation.
 
-This repository contains the **data construction pipeline** used to build retinal instruction-following conversations for the paper:
+This repository provides the core code used in the paper [RetinalGPT: A Retinal Clinical Preference Conversational Assistant Powered by Large Vision-Language Models](https://arxiv.org/abs/2503.03987), including:
 
-- [RetinalGPT: A Retinal Clinical Preference Conversational Assistant Powered by Large Vision-Language Models](https://arxiv.org/pdf/2503.03987)
-- [Hugging Face Model](https://huggingface.co/ASU-GSL/RetinalGPT)
+- inference scripts for the released RetinalGPT model
+- the retinal instruction and alignment data construction pipeline
+- dataset-specific retinal description builders
+- a minimal sample for adapting the pipeline to custom retinal data
 
-## Overview
-
-The main workflow in this repo is:
-
-1. Build dataset-specific retinal descriptions through `Desc` classes.
-2. Construct two types of data:
-   - `instruction`
-   - `alignment`
-3. Run the pipeline in one of two modes:
-   - `direct` generation
-   - `batch` request packaging / unpacking
-4. Convert generated outputs into instruction-tuning JSONL / JSON files.
-
-This repo is **not** the full end-to-end training codebase for the entire project. It focuses on the retinal data processing and conversation generation pipeline.
-
+This repository is primarily a research and data-construction codebase. It is not the full end-to-end training stack for every component of the project.
 
 <p align="center">
   <img src="./figures/chat.png" alt="RetinalGPT chat example" width="320">
 </p>
 
+## Highlights
 
-## Environment
+- Retinal-domain multimodal assistant: supports retinal image reasoning through a LLaVA-style vision-language backbone.
+- Structured data construction pipeline: converts heterogeneous retinal metadata into unified hidden descriptions for conversation generation.
+- Two supervision targets: supports both `instruction` data and compact `alignment` data.
+- Two execution paths: supports direct generation and batch request packaging / unpacking workflows.
+- Bring-your-own-data support: includes a minimal sample for adapting the pipeline to new retinal datasets.
 
-The environment follows the **LLaVA base setup used for legacy `v0` workflows** in our project.
+## What Is In This Repo
 
-In practice, we use the standard LLaVA-style base environment and then install the extra packages needed by this repository:
+There are two main ways to use this repository:
+
+1. Run the released RetinalGPT model for retinal image inference.
+2. Build retinal conversation data for instruction tuning or alignment experiments.
+
+If you only want model inference, start with `run_retinalGPT_simple.py` or `run_retinalGPT.py`.
+
+If you want to build new retinal conversations from metadata and images, start with `Instruction/pipeline_runner.py`, `Instruction/batch_runner.py`, and `Instruction/sample/`.
+
+## Installation
+
+The environment follows the LLaVA-style base setup used in the project, with extra dependencies from this repository:
 
 ```bash
 conda create -n retinalgpt python=3.10 -y
@@ -45,50 +49,110 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-If you already have a working LLaVA / `llava-v0` style environment, you can usually reuse it directly. For more details on the upstream base setup, please refer to the official LLaVA repository.
+Notes:
+
+- CUDA is required for the provided inference scripts.
+- If you already have a working LLaVA or `llava-v0` style environment, you can usually reuse it.
+
+## Quick Start
+
+### 1. Single-image inference
+
+Use the simplest entrypoint when you want one retinal image and one question:
+
+```bash
+python3 run_retinalGPT_simple.py \
+  --model-name ASU-GSL/RetinalGPT \
+  --image-file /path/to/retinal_image.png \
+  --question "Please describe this retinal image in detail."
+```
+
+### 2. Batch inference
+
+Use the batch script when you want to process a folder of images with a JSON or JSONL question file:
+
+```bash
+python3 run_retinalGPT.py \
+  --model-name ASU-GSL/RetinalGPT \
+  --image-folder /path/to/images \
+  --question-file /path/to/questions.jsonl \
+  --answers-file /path/to/predictions.jsonl
+```
+
+A minimal example question file is available at [examples/inference/questions.json](./examples/inference/questions.json).
+
+Supported input fields include:
+
+- `id`
+- `image` or `images`
+- `question`
+- `questions`
+- `messages`
+
+When `messages` is provided, the script automatically extracts user or human turns as questions.
+
+### 3. Run an instruction or alignment job
+
+```bash
+cd Instruction
+python3 pipeline_runner.py UK_instruction_direct
+```
+
+### 4. Run a batch packaging job
+
+```bash
+cd Instruction
+python3 batch_runner.py APTOS
+```
+
+### 5. Run the custom-data sample
+
+```bash
+cd Instruction
+python3 sample/generate_instruction_conversations.py \
+  --metadata-csv sample/metadata_template.csv \
+  --image-dir /path/to/your/images \
+  --output-jsonl sample/generated_instruction_conversations.jsonl
+```
+
+For a minimal walkthrough, see [Instruction/sample/README.md](./Instruction/sample/README.md).
 
 ## Repository Structure
 
 ```text
 RetinalGPT/
 ├── Instruction/
-│   ├── Desc/                         # Dataset-specific description builders
-│   ├── configs/                      # Config-driven dataset jobs
-│   ├── experiments/                  # Optional script-style experiment entrypoints
-│   ├── sample/                       # Minimal bring-your-own-data example
-│   ├── tools/                        # Bounding box and postprocess helpers
-│   ├── pipeline_runner.py            # Config-driven instruction/alignment runner
-│   ├── batch_runner.py               # Config-driven batch runner
-│   ├── pipeline_prompts.py           # Centralized instruction/alignment prompts
-│   ├── batch_prompts.py              # Centralized batch prompts
-│   ├── instruction_gen_async.py      # API-based conversation generation
-│   ├── convert2json.py               # Output parsing / JSON conversion
-│   ├── utils.py                      # Shared helper functions
+│   ├── Desc/                         # Dataset-specific retinal description builders
+│   ├── configs/                      # Config-driven pipeline and batch jobs
+│   ├── experiments/                  # Older script-style entrypoints
+│   ├── sample/                       # Minimal custom-data example
+│   ├── tools/                        # Utility helpers for boxes and postprocessing
+│   ├── batch_runner.py               # Batch request packaging / unpacking
+│   ├── pipeline_runner.py            # Instruction / alignment generation runner
+│   ├── instruction_gen_async.py      # Async API-based generation
+│   ├── convert2json.py               # Output parsing and JSON conversion
 │   └── ...
-├── figures/                          # Paper assets and reference figures
+├── figures/                          # Figures used in the paper / README
+├── llava/                            # LLaVA-based modeling components
+├── run_retinalGPT.py                 # Batch inference entrypoint
+├── run_retinalGPT_simple.py          # Single-image inference entrypoint
 ├── requirements.txt
 └── README.md
 ```
 
-## Core Idea
+## Data Construction Pipeline
 
-Each dataset is wrapped by a description class in `Instruction/Desc`. These classes map raw metadata into a unified text description that can be consumed by a large multimodal model.
+The main idea of the data pipeline is to convert retinal metadata into a unified hidden textual description, then pair that description with prompt instructions to generate conversational supervision.
 
-Typical inputs include:
+Typical metadata sources include:
 
 - image quality predictions
-- fractal / vascular quantitative features
+- vascular or fractal quantitative features
 - disease labels
 - lesion masks or bounding boxes
-- dataset-specific metadata
+- dataset-specific annotations
 
-The generated description is then appended with task-specific prompt instructions and sent to the API to produce a retinal conversation sample.
-
-## Main Components
-
-### 1. Description Builders
-
-`Instruction/Desc` contains dataset-specific classes such as:
+Each dataset is wrapped by a description class under `Instruction/Desc`, such as:
 
 - `APTOSDesc`
 - `EyeQDesc`
@@ -99,166 +163,63 @@ The generated description is then appended with task-specific prompt instruction
 - `RFMiDDesc`
 - `UKDesc`
 
-All of them follow the same design goal: turn heterogeneous dataset annotations into a reusable natural-language description.
-
-### 2. Data Targets
-
-The project maintains two data tracks:
-
-- `instruction`: multi-turn retinal conversations
-- `alignment`: compact alignment-style supervision, usually one-turn
-
-### 3. Execution Modes
-
-The project maintains two execution modes:
-
-- `direct`: call the API directly and write conversation outputs
-- `batch`: package local requests first, send them to the API server, then unpack returned outputs
-
-Most users only need `pipeline_runner.py`, `batch_runner.py`, and `Instruction/sample/`. `Instruction/experiments/` keeps the older script-style entrypoints in one place.
-
-### 4. Conversation Generation
-
-The main generation logic lives in:
-
-- `Instruction/instruction_gen_async.py`
-
-This module supports:
-
-- async API calls
-- text-only generation
-- image-conditioned generation
-- compatibility with older script-style calls already present in this repo
-
-### 5. Structured Pipeline Entry
-
-For `instruction` / `alignment` construction, the main entrypoint is:
-
-- `Instruction/pipeline_runner.py`
-
-For local batch request packaging and unpacking, the main entrypoint is:
-
-- `Instruction/batch_runner.py`
-
-Both are config-driven and use dataset jobs defined in `Instruction/configs/`.
+These classes share the same goal: map heterogeneous retinal annotations into reusable natural-language descriptions that can be consumed by a multimodal model.
 
 <p align="center">
   <img src="./figures/data_processing.png" alt="RetinalGPT data processing pipeline" width="760">
 </p>
 
-## Quick Start
+## Main Pipeline Modes
 
-### Run RetinalGPT inference
+The repository supports two data targets:
 
-For the simplest single-image run:
+- `instruction`: multi-turn retinal conversations
+- `alignment`: compact alignment-style supervision, usually single-turn
 
-```bash
-python3 run_retinalGPT_simple.py \
-  --model-name ASU-GSL/RetinalGPT \
-  --image-file /path/to/retinal_image.png \
-  --question "Please describe this retinal image in detail."
-```
+It also supports two execution modes:
 
-After downloading the RetinalGPT weights, you can run inference directly with:
+- `direct`: call the API directly and write outputs locally
+- `batch`: package local requests, send them to an API workflow, then unpack returned outputs
 
-```bash
-python3 run_retinalGPT.py \
-  --model-name ASU-GSL/RetinalGPT \
-  --image-folder /path/to/images \
-  --question-file examples/inference/questions.json \
-  --answers-file /path/to/predictions.jsonl
-```
+In practice, the typical engineering flow is:
 
-You can also run batch inference with a JSON or JSONL question file:
+1. Build hidden metadata with a class in `Instruction/Desc/`.
+2. Choose a job from `Instruction/configs/pipeline_jobs.json` or `Instruction/configs/batch_jobs.json`.
+3. Run `pipeline_runner.py` for `instruction` or `alignment`, or `batch_runner.py` for batch workflows.
+4. Use `convert2json.py`, `utils.py`, and `Instruction/tools/` for postprocessing and format conversion.
+5. Start from `Instruction/sample/` if you want to adapt the pipeline to your own dataset.
 
-```bash
-python3 run_retinalGPT.py \
-  --model-name ASU-GSL/RetinalGPT \
-  --image-folder /path/to/images \
-  --question-file /path/to/questions.jsonl \
-  --answers-file /path/to/predictions.jsonl
-```
+## Output Format
 
-Supported batch input fields are:
-
-- `id`
-- `image` or `images`
-- `question`
-- `questions`
-- `messages`
-
-For `messages`, the script automatically extracts user or human turns as questions.
-
-A minimal example question file is provided at [examples/inference/questions.json](./examples/inference/questions.json).
-
-### Run an instruction/alignment job
-
-```bash
-cd Instruction
-
-python3 pipeline_runner.py UK_instruction_direct
-```
-
-### Run a batch packaging job
-
-```bash
-cd Instruction
-
-python3 batch_runner.py APTOS
-```
-
-### Run the custom-data sample
-
-```bash
-cd Instruction
-
-python3 sample/generate_instruction_conversations.py \
-  --metadata-csv sample/metadata_template.csv \
-  --image-dir /path/to/your/images \
-  --output-jsonl sample/generated_instruction_conversations.jsonl
-```
-
-For the minimal custom-data walkthrough, see [Instruction/sample/README.md](./Instruction/sample/README.md).
-
-### Run an experiment-style entry script
-
-```bash
-cd Instruction
-
-python3 experiments/instruction/ins_UK.py
-python3 experiments/batch/batch_file_APTOS.py
-```
-
-### Output
-
-The pipeline writes conversation samples into JSONL files with fields such as:
+The pipeline writes conversation data as JSONL records with fields such as:
 
 - `id`
 - `image`
 - `conversations`
 
-These outputs can then be merged, cleaned, aligned, or converted into nested JSON using the helper scripts already included in `Instruction/`.
+The inference script writes JSONL records with fields such as:
 
-## Typical Flow
+- `id`
+- `image`
+- `qa_pairs`
 
-The intended engineering flow is now:
+These outputs can then be merged, cleaned, converted, or used in downstream instruction-tuning workflows.
 
-1. Build hidden metadata with `Desc/*`
-2. Choose a dataset job from `Instruction/configs/`
-3. Run either:
-   - `pipeline_runner.py` for `instruction` / `alignment`
-   - `batch_runner.py` for batch request workflows
-4. Use `convert2json.py`, `utils.py`, and `Instruction/tools/` for packing, unpacking, conversion, and utility workflows
-5. Use `Instruction/sample/` as the minimal bring-your-own-data example
-6. Use `Instruction/experiments/` only if you want the old script-style entrypoints
+## Legacy Experiment Scripts
 
-## Notes
+The repository still includes older experiment-style entry scripts:
 
-- This repository is intended for **research and data construction**.
-- It is centered on retinal conversation generation and instruction data preparation.
-- `Instruction/sample` is the recommended starting point for adapting the pipeline to a new dataset.
-- `Instruction/experiments` keeps the dataset-specific experiment scripts out of the main pipeline path.
-- Parts of the repository structure and code organization were optimized with OpenAI Codex under the authors' supervision.
+```bash
+cd Instruction
+python3 experiments/instruction/ins_UK.py
+python3 experiments/batch/batch_file_APTOS.py
+```
+
+For most users, the config-driven runners are the recommended entrypoints.
+
+## Acknowledgement
+
+We thank the LLaVA and LLaVA-Med projects. Parts of the training and evaluation stack are built on top of their open-source vision-language modeling framework.
 
 ## Citation
 
@@ -272,7 +233,3 @@ If you find this project useful, please cite:
   year={2025}
 }
 ```
-
-## Acknowledgement
-
-We thank the LLaVA and LLaVA-Med projects. Our training and evaluation code is built on top of their open-source vision-language modeling framework.
