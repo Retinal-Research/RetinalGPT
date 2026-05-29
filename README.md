@@ -27,6 +27,26 @@ This repository includes:
 
 ---
 
+## 📁 Repository Structure
+
+```text
+RetinalGPT/
+├── Instruction/
+│   ├── Desc/                 # Dataset-specific description builders
+│   ├── configs/              # Pipeline and batch jobs
+│   ├── sample/               # Minimal custom-data example
+│   ├── batch_runner.py       # Batch request packaging / unpacking
+│   ├── pipeline_runner.py    # Instruction / alignment generation
+│   └── convert2json.py       # Output conversion helpers
+├── figures/
+├── llava/
+├── run_retinalGPT.py
+├── run_retinalGPT_simple.py
+└── README.md
+```
+
+---
+
 ## ✨ Highlights
 
 - **Retinal Multimodal Assistant:** RetinalGPT supports clinically grounded retinal image understanding and conversation with a vision-language modeling framework.
@@ -97,26 +117,6 @@ python3 sample/generate_instruction_conversations.py \
 ```
 
 More details: [Instruction/sample/README.md](./Instruction/sample/README.md)
-
----
-
-## 📁 Repository Structure
-
-```text
-RetinalGPT/
-├── Instruction/
-│   ├── Desc/                 # Dataset-specific description builders
-│   ├── configs/              # Pipeline and batch jobs
-│   ├── sample/               # Minimal custom-data example
-│   ├── batch_runner.py       # Batch request packaging / unpacking
-│   ├── pipeline_runner.py    # Instruction / alignment generation
-│   └── convert2json.py       # Output conversion helpers
-├── figures/
-├── llava/
-├── run_retinalGPT.py
-├── run_retinalGPT_simple.py
-└── README.md
-```
 
 ## 🧠 Pipeline Overview
 
