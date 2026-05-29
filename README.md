@@ -1,4 +1,4 @@
-# RetinalGPT: Advancing Clinical Ophthalmology Through Instruction-Tuned Vision–Language Intelligence
+# 👁️ RetinalGPT: Advancing Clinical Ophthalmology Through Instruction-Tuned Vision–Language Intelligence
 
 [![Code](https://img.shields.io/badge/GitHub-Code-black)](https://github.com/Retinal-Research/RetinalGPT)
 [![Paper](https://img.shields.io/badge/arXiv-2503.03987-b31b1b)](https://arxiv.org/abs/2503.03987)
