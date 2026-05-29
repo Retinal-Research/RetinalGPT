@@ -1,5 +1,9 @@
 # RetinalGPT
 
+[![Code](https://img.shields.io/badge/GitHub-Code-black)](https://github.com/Retinal-Research/RetinalGPT)
+[![Paper](https://img.shields.io/badge/arXiv-2503.03987-b31b1b)](https://arxiv.org/abs/2503.03987)
+[![Model](https://img.shields.io/badge/HuggingFace-Model-orange)](https://huggingface.co/ASU-GSL/RetinalGPT)
+
 RetinalGPT is a retinal multimodal assistant built on large vision-language models.
 
 This repository contains the **data construction pipeline** used to build retinal instruction-following conversations for the paper:
@@ -272,4 +276,3 @@ If you find this project useful, please cite:
 ## Acknowledgement
 
 We thank the LLaVA and LLaVA-Med projects. Our training and evaluation code is built on top of their open-source vision-language modeling framework.
-
