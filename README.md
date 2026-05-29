@@ -21,10 +21,6 @@ This repository includes:
 - dataset-specific retinal description builders
 - a minimal sample for adapting the pipeline to custom data
 
-<p align="center">
-  <img src="./figures/chat.png" alt="RetinalGPT chat example" width="320">
-</p>
-
 ---
 
 ## 📁 Repository Structure
