@@ -120,7 +120,11 @@ More details: [Instruction/sample/README.md](./Instruction/sample/README.md)
 
 ## 🧠 Pipeline Overview
 
-The figure below illustrates the overall RetinalGPT data construction workflow. We first collect retinal images and structured ophthalmic metadata, then convert them into hidden textual descriptions. These descriptions are combined with prompt templates to generate retinal instruction-following conversations and alignment data for downstream model development.
+The overall workflow is:
+
+1. Collect retinal images and structured metadata.
+2. Convert metadata into hidden textual descriptions.
+3. Combine descriptions with prompts to generate instruction and alignment data.
 
 <p align="center">
   <img src="./figures/data_processing.png" alt="RetinalGPT data processing pipeline" width="760">
