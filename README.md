@@ -1,12 +1,14 @@
-# 👁️ RetinalGPT: Advancing Clinical Ophthalmology Through Instruction-Tuned Vision–Language Intelligence
+# RetinalGPT: Advancing Clinical Ophthalmology Through Instruction-Tuned Vision–Language Intelligence
 
 [![Code](https://img.shields.io/badge/GitHub-Code-black)](https://github.com/Retinal-Research/RetinalGPT)
 [![Paper](https://img.shields.io/badge/arXiv-2503.03987-b31b1b)](https://arxiv.org/abs/2503.03987)
 [![Model](https://img.shields.io/badge/HuggingFace-Model-orange)](https://huggingface.co/ASU-GSL/RetinalGPT)
 
+---
+
 ## News
 
-- April 14, 2026: RetinalGPT was submitted to *Ophthalmology Science* and is currently under review.
+- **[2026.04.14]** RetinalGPT was submitted to *Ophthalmology Science* and is currently under review.
 
 RetinalGPT is a retinal vision-language assistant for clinically grounded ophthalmic image understanding and conversation.
 
@@ -21,6 +23,17 @@ This repository includes:
   <img src="./figures/chat.png" alt="RetinalGPT chat example" width="320">
 </p>
 
+---
+
+## Highlights
+
+- **Retinal Multimodal Assistant:** RetinalGPT supports clinically grounded retinal image understanding and conversation with a vision-language modeling framework.
+- **Instruction-Tuned Ophthalmology Intelligence:** The project focuses on instruction-following retinal dialogue for clinical-style reasoning and response generation.
+- **Data Construction Pipeline:** The repository includes a structured pipeline for building retinal instruction and alignment data from heterogeneous metadata sources.
+- **Custom-Data Adaptation:** A minimal sample is included for extending the pipeline to new retinal datasets.
+
+---
+
 ## Installation
 
 ```bash
@@ -31,6 +44,8 @@ pip install -r requirements.txt
 ```
 
 CUDA is required for the provided inference scripts.
+
+---
 
 ## Quick Start
 
@@ -81,6 +96,8 @@ python3 sample/generate_instruction_conversations.py \
 
 More details: [Instruction/sample/README.md](./Instruction/sample/README.md)
 
+---
+
 ## Repository Structure
 
 ```text
@@ -118,9 +135,13 @@ Supported dataset description builders include:
   <img src="./figures/data_processing.png" alt="RetinalGPT data processing pipeline" width="760">
 </p>
 
+---
+
 ## Acknowledgement
 
 We thank the LLaVA and LLaVA-Med projects for their open-source vision-language modeling framework.
+
+---
 
 ## Citation
 
